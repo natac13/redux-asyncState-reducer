@@ -7,9 +7,26 @@ import {
   requestSuccess
 } from '../src/actionCreators';
 
-describe('request', () => {
-  it('should return a FSA', () => {
-    const action = request();
-    expect(isFSA(action)).to.be.true;
+describe('actionCreators', () => {
+  describe('request', () => {
+    it('should return a FSA', () => {
+      const action = request();
+      expect(isFSA(action)).to.be.true;
+    });
+  });
+
+  describe('requestFail', () => {
+    it('should return a FSA', () => {
+      const action = requestFail();
+      expect(isFSA(action)).to.be.true;
+    });
+  });
+
+  describe('requestSuccess', () => {
+    it('should return a FSA', () => {
+      const action = requestSuccess();
+      expect(isFSA(action)).to.be.true;
+    });
   });
 });
+

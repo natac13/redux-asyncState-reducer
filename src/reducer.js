@@ -1,10 +1,10 @@
 import { Map } from 'immutable';
 
 import {
-    FETCH,
-    FETCH_FAIL,
-    FETCH_SUCCESS
-} from './constants/';
+  REQUEST,
+  REQUEST_FAIL,
+  REQUEST_SUCCESS
+} from './constants';
 
 import {
   requestChange,
@@ -21,19 +21,19 @@ import {
  * @prop [didFail] false by default and true when the request has failed
  * @prop [success] false by default and true when the request has received data
  */
-const initialState = Map({
-  fetching: false,
+export const initialState = Map({
+  isFetching: false,
   didFail: false,
   success: false
 });
 
 function asyncState (state = initialState, action) {
   switch (action.type) {
-    case FETCH:
+    case REQUEST:
       return requestChange(state);
-    case FETCH_FAIL:
+    case REQUEST_FAIL:
       return requestFail(state);
-    case FETCH_SUCCESS:
+    case REQUEST_SUCCESS:
       return requestSuccess(state);
     default:
       return state;

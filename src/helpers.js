@@ -7,8 +7,8 @@ const boolUpdater = curry(function (what, toBool, state) {
 /**
  * Functions that is looking for a state immutable map to run update on
  */
-const fetchingData = boolUpdater('fetching', true);
-const noFetching = boolUpdater('fetching', false);
+const fetchingData = boolUpdater('isFetching', true);
+const noFetching = boolUpdater('isFetching', false);
 const didSucceed = boolUpdater('success', true);
 const noSuccess = boolUpdater('success', false);
 const failedData = boolUpdater('didFail', true);
