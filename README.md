@@ -39,7 +39,7 @@ These action creators can be added to the actions of your application. My soluti
 
 ### Important Note
 The reducers state is using [ImmutableJS][]. More specifically it is a [Map][] instead of a plain JS object. 
-Therefore is read the boolean values of `isFetching` `didFail` and `success` you need to use.
+Therefore to read the boolean values of `isFetching` `didFail` and `success` you need to use.
 ```js
 const isFetching = asyncState.get('isFetching');
 const didFail = asyncState.get('didFail');
