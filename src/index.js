@@ -1,4 +1,4 @@
-export default from './reducers';
+export default from './reducer';
 
 export {
   request,

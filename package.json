@@ -26,20 +26,10 @@
   },
   "homepage": "https://github.com/natac13/redux-asyncState-reducer#readme",
   "dependencies": {
-    "eslint-config-standard": "4.4.0",
     "immutable": "3.7.6",
     "ramda": "0.19.1",
     "redux-actions": "0.9.1",
     "webpack": "1.12.14"
-  },
-  "config": {
-    "ghooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-commit": "eslint src/ && npm t"
-    },
-    "commitizen": {
-      "path": "node_modules/cz-conventional-changelog"
-    }
   },
   "devDependencies": {
     "babel-cli": "6.6.0",
@@ -60,5 +50,14 @@
     "mocha": "2.4.5",
     "semantic-release": "^4.3.5",
     "validate-commit-msg": "2.1.0"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "eslint src/ && npm t"
+    },
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }
