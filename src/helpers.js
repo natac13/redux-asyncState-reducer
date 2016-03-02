@@ -1,7 +1,19 @@
 import { curry, compose } from 'ramda';
+import { Map } from 'immutable';
 
-const boolUpdater = curry(function (what, toBool, state) {
-  return state.update(what, (what) => toBool);
+const boolUpdater = curry(function (property, bool, state) {
+  if (!Map.isMap(state)) {
+    state = Map(state);
+  }
+
+  if (typeof property !== 'string') {
+    throw new TypeError('Type of property should be a string');
+  }
+
+  if (typeof bool !== 'boolean') {
+    throw new TypeError('Type of bool should be a boolean');
+  }
+  return state.update(property, () => bool);
 });
 
 /**
@@ -14,12 +26,19 @@ const noSuccess = boolUpdater('success', false);
 const failedData = boolUpdater('didFail', true);
 const noFail = boolUpdater('didFail', false);
 
-export const requestChange = compose(fetchingData, noFail, noSuccess);
-export const requestSuccess = compose(noFetching, noFail, didSucceed);
-export const requestFail = compose(failedData, noFetching, noSuccess);
+const requestChange = compose(fetchingData, noFail, noSuccess);
+const requestSuccess = compose(noFetching, noFail, didSucceed);
+const requestFail = compose(failedData, noFetching, noSuccess);
 
 export {
   requestChange,
   requestSuccess,
-  requestFail
+  requestFail,
+  boolUpdater,
+  fetchingData,
+  noFetching,
+  didSucceed,
+  noSuccess,
+  failedData,
+  noFail
 };

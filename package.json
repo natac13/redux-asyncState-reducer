@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
+    "test:watch": "npm t -- --watch",
     "lint": "eslint src/",
     "commit": "git-cz"
   },
