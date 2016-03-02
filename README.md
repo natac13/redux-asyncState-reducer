@@ -2,7 +2,7 @@
 
 # redux-asyncState-reducer
 
-This is a redux reducer to handle the asynchronous state changes that happen during a request. The idea comes form the Redux documentation on [Async Actions][]
+This is a [Redux][] reducer to handle the asynchronous state changes that happen during a request. The idea comes form the [Redux][] documentation on [Async Actions][]
 
 
 ## Install
@@ -36,6 +36,15 @@ These action creators can be added to the actions of your application. My soluti
 |`request`    |true        |false    |false    |
 |`requestFail`|false       |true     |false    |
 |`requestSuccess`|false    |false    |true     |
+
+### Important Note
+The reducers state is using [ImmutableJS][]. More specifically it is a [Map][] instead of a plain JS object. 
+Therefore is read the boolean values of `isFetching` `didFail` and `success` you need to use.
+```js
+const isFetching = asyncState.get('isFetching');
+const didFail = asyncState.get('didFail');
+const success = asyncState.get('success');
+```
 
 ### My Usage
 
@@ -77,9 +86,9 @@ class Main extends Component {
   render() {
       const { asyncState } = this.props;
     return (
-      {asyncState.get('isFetching') 
-      ? <ProgressBar type='circular' mode='indeterminate' />
-      : <LongList data={this.state.data} /> }
+      {asyncState.get('success') 
+      ? <LongList data={this.state.data} />
+      : <ProgressBar type='circular' mode='indeterminate' /> }
     )
   } 
 }
@@ -98,3 +107,6 @@ License: (MIT)
 [`combineReducers`]: http://redux.js.org/docs/api/combineReducers.html
 [redux-promise]: https://github.com/acdlite/redux-promise
 [axios]: https://github.com/mzabriskie/axios
+[ImmutableJS]: https://facebook.github.io/immutable-js/
+[Map]: https://facebook.github.io/immutable-js/docs/#/Map
+[Redux]: https://github.com/reactjs/redux
