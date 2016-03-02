@@ -5,8 +5,9 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
     "test:watch": "npm t -- --watch",
-    "coverage": "istanbul cover -x *.spec.js _mocha -- -R spec --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
-    "check-coverage": "istanbul check-coverage --statements 95 --branches 95 --functions 100 --lines 95",
+    "coverage": "babel-node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
+    "check-coverage": "babel-node node_modules/istanbul/lib/cli.js check-coverage --statements 95 --branches 95 --functions 100 --lines 95",
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
     "lint": "eslint src/",
     "commit": "git-cz",
     "build": "babel ./src --out-dir ./lib",
