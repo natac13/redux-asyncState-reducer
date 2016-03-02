@@ -1,5 +1,5 @@
-export default from './reducer';
-
+import asyncState from './reducer';
+export default asyncState;
 export {
   request,
   requestFail,
