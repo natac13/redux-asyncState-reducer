@@ -1,17 +1,17 @@
 {
   "name": "redux-async-state-reducer",
-  "version": "0.0.1",
   "description": "A reducer and actionCreators to handle the asynchronous state of the application",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
     "test:watch": "npm t -- --watch",
     "lint": "eslint src/",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/natac13/redux-asyncState-reducer.git"
+    "url": "https://github.com/natac13/redux-asyncState-reducer.git"
   },
   "keywords": [
     "redux",
@@ -58,7 +58,7 @@
     "flux-standard-action": "0.6.1",
     "ghooks": "1.0.3",
     "mocha": "2.4.5",
-    "semantic-release": "4.3.5",
+    "semantic-release": "^4.3.5",
     "validate-commit-msg": "2.1.0"
   }
 }
