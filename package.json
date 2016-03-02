@@ -34,7 +34,7 @@
   "config": {
     "ghooks": {
       "commit-msg": "validate-commit-msg",
-      "pre-commit": "npm t"
+      "pre-commit": "esling src/ && npm t"
     },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
