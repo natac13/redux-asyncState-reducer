@@ -6,10 +6,12 @@
     "test": "mocha --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
     "test:watch": "npm t -- --watch",
     "coverage": "babel-node node_modules/istanbul/lib/cli.js cover node_modules/mocha/bin/_mocha -- -R spec --compilers js:babel-core/register --recursive --require ./test/test_helper.js",
-    "check-coverage": "babel-node node_modules/istanbul/lib/cli.js check-coverage --statements 95 --branches 95 --functions 100 --lines 95",
-    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "check-coverage": "nyc check-coverage --statements 95 --branches 95 --functions 100 --lines 95",
+    "report-coverage": "nyc report --reporter=text-lcov | codecov",
+    "nyc": "nyc --reporter=lcov --reporter=text-summary --require babel-core/register mocha --recursive --require ./test/test_helper.js",
     "lint": "eslint src/",
     "commit": "git-cz",
+    "precommit": "npm run lint && npm run nyc && npm run check-coverage",
     "prebuild": "rm -rf ./lib && mkdir lib",
     "build": "babel ./src --out-dir ./lib",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
@@ -56,16 +58,25 @@
     "ghooks": "1.0.3",
     "istanbul": "1.0.0-alpha.2",
     "mocha": "2.4.5",
+    "nyc": "5.6.0",
     "semantic-release": "^4.3.5",
     "validate-commit-msg": "2.1.0"
   },
   "config": {
     "ghooks": {
       "commit-msg": "validate-commit-msg",
-      "pre-commit": "eslint src/ && npm t && npm run check-coverage"
+      "pre-commit": "npm run lint && npm run test && npm run check-coverage"
     },
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
+    },
+    "nyc": {
+      "exclude": [
+        "**/*.spec.js",
+        "lib",
+        "coverage",
+        "test"
+      ]
     }
   }
 }
