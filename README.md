@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/natac13/redux-asyncState-reducer.svg?branch=master)](https://travis-ci.org/natac13/redux-asyncState-reducer) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+[![codecov.io](https://codecov.io/github/natac13/redux-asyncState-reducer/coverage.svg?branch=master)](https://codecov.io/github/natac13/redux-asyncState-reducer?branch=master) [![Build Status](https://travis-ci.org/natac13/redux-asyncState-reducer.svg?branch=master)](https://travis-ci.org/natac13/redux-asyncState-reducer) [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
 
 # redux-asyncState-reducer
 
